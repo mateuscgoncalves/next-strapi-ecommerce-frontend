@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from '../styles/Home.module.css'
 import products from '../products.json'
 import {fromImgToUrl} from "../utils/urls";
+import {twoDecimals} from "../utils/formats";
 
 export default function Home() {
 
@@ -25,7 +26,7 @@ export default function Home() {
                                         <img src={fromImgToUrl(product.image)} alt=""/>
                                     </div>
                                     <div className={styles.product__col}>
-                                        {product.name}
+                                        {product.name} ${twoDecimals(product.price)}
                                     </div>
                                 </div>
                             </a>
