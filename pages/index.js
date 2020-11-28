@@ -1,11 +1,10 @@
 import Head from 'next/head'
 import Link from "next/link";
 import styles from '../styles/Home.module.css'
-import products from '../products.json'
-import {fromImgToUrl} from "../utils/urls";
+import {API_URL, fromImgToUrl} from "../utils/urls";
 import {twoDecimals} from "../utils/formats";
 
-export default function Home() {
+export default function Home({products}) {
 
     return (
         <div>
@@ -13,7 +12,6 @@ export default function Home() {
                 <title>Create Next App</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
 
             {
                 products.map(product => (
@@ -36,4 +34,17 @@ export default function Home() {
             }
         </div>
     )
+}
+
+//Archive page, thats why doesn't have arguments
+export async function getStaticProps(){
+    //Fetch products
+    const products_res = await fetch(`${API_URL}/products/`);
+    const products = await products_res.json();
+    //Return the products as props
+    return {
+        props: {
+            products
+        }
+    }
 }

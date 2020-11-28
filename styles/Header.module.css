@@ -1,0 +1,22 @@
+.nav{
+    position: relative;
+}
+.nav__item{
+    line-height: 24px;
+    cursor: pointer;
+}
+
+.nav__back{
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+.nav__title{
+    text-align: center;
+}
+
+.nav__auth{
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
