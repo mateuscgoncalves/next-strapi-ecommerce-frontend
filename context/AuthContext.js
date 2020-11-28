@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
 
-    const [user, setState] = useState(null);
+    const [user, setUser] = useState(null);
     const router = useRouter();
     /**
      * Set email to user
