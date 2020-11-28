@@ -33,7 +33,7 @@ export default () => {
                     {
                         user ? (
                             <Link href={'/account'}>
-                                <a>{user.email}</a>
+                                <a><img src="/user.png" alt={user.email} className={styles.nav__userAvatar}/></a>
                             </Link>
                         ) : (
                             <Link href={'/login'}>

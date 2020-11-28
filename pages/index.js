@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from "next/link";
 import styles from '../styles/Home.module.css'
-import {API_URL, fromImgToUrl, MAGIC_PUBLIC_KEY} from "../utils/urls";
+import {API_URL, fromImgToUrl} from "../utils/urls";
 import {twoDecimals} from "../utils/formats";
 
 export default function Home({products}) {
