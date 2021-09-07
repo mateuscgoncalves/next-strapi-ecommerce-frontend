@@ -39,15 +39,34 @@ export const AuthProvider = (props) => {
             
         }
     }
-
+    /**
+     * Verifies if there is any loggedin user and set to context
+     * @returns {Promise<void>}
+     */
     const checkUserLoggedIn = async () => {
         try{
             const isUserLoggedIn = await magic.user.isLoggedIn();
             if(isUserLoggedIn){
                 const { email } = await magic.user.getMetadata();
                 setUser({ email });
+
+                const token = await getToken();
+                console.log( token);
             }
-        }catch (e){
+        }catch (err){
+
+        }
+    }
+    /**
+     * Retrieves the magic issues bearer token
+     * This allows user to make authenticated requests
+     * @returns {Promise<ExtendedPromise<string> & TypedEmitter<{done: (result: string) => void, error: (reason: any) => void, settled: () => void} extends void ? DefaultEvents<string> : ({done: (result: string) => void, error: (reason: any) => void, settled: () => void} & DefaultEvents<string>)>>}
+     */
+    const getToken = async () =>{
+        try {
+            const token = magic.user.getIdToken();
+            return token;
+        }catch (err){
 
         }
     }
@@ -58,7 +77,7 @@ export const AuthProvider = (props) => {
     }, []);
 
     return(
-        <AuthContext.Provider value={{user, loginUser, logoutUser}}>
+        <AuthContext.Provider value={{user, loginUser, logoutUser, getToken}}>
             {props.children}
         </AuthContext.Provider>
     );
